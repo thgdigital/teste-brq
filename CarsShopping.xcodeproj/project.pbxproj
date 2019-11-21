@@ -15,6 +15,10 @@
 		F3B8A9702386F6270074058F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3B8A96E2386F6270074058F /* LaunchScreen.storyboard */; };
 		F3B8A97B2386F6270074058F /* CarsShoppingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A97A2386F6270074058F /* CarsShoppingTests.swift */; };
 		F3B8A9862386F6270074058F /* CarsShoppingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A9852386F6270074058F /* CarsShoppingUITests.swift */; };
+		F3B8A9962386F7AE0074058F /* HomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A9952386F7AE0074058F /* HomeListView.swift */; };
+		F3B8A9982386F7E70074058F /* HomeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A9972386F7E70074058F /* HomeList.swift */; };
+		F3B8A99A2386F7FA0074058F /* HomeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A9992386F7FA0074058F /* HomeProtocol.swift */; };
+		F3B8A99C2386FA640074058F /* HomeListRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A99B2386FA640074058F /* HomeListRoute.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		F3B8A9812386F6270074058F /* CarsShoppingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarsShoppingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3B8A9852386F6270074058F /* CarsShoppingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsShoppingUITests.swift; sourceTree = "<group>"; };
 		F3B8A9872386F6270074058F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3B8A9952386F7AE0074058F /* HomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListView.swift; sourceTree = "<group>"; };
+		F3B8A9972386F7E70074058F /* HomeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeList.swift; sourceTree = "<group>"; };
+		F3B8A9992386F7FA0074058F /* HomeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocol.swift; sourceTree = "<group>"; };
+		F3B8A99B2386FA640074058F /* HomeListRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListRoute.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,7 @@
 		F3B8A9622386F61F0074058F /* CarsShopping */ = {
 			isa = PBXGroup;
 			children = (
+				F3B8A9932386F76F0074058F /* Modulos */,
 				F3B8A9632386F61F0074058F /* AppDelegate.swift */,
 				F3B8A9652386F61F0074058F /* SceneDelegate.swift */,
 				F3B8A9672386F61F0074058F /* ContentView.swift */,
@@ -134,6 +143,25 @@
 				F3B8A9872386F6270074058F /* Info.plist */,
 			);
 			path = CarsShoppingUITests;
+			sourceTree = "<group>";
+		};
+		F3B8A9932386F76F0074058F /* Modulos */ = {
+			isa = PBXGroup;
+			children = (
+				F3B8A9942386F77A0074058F /* HomeList */,
+			);
+			path = Modulos;
+			sourceTree = "<group>";
+		};
+		F3B8A9942386F77A0074058F /* HomeList */ = {
+			isa = PBXGroup;
+			children = (
+				F3B8A9952386F7AE0074058F /* HomeListView.swift */,
+				F3B8A9972386F7E70074058F /* HomeList.swift */,
+				F3B8A9992386F7FA0074058F /* HomeProtocol.swift */,
+				F3B8A99B2386FA640074058F /* HomeListRoute.swift */,
+			);
+			path = HomeList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,7 +296,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3B8A9642386F61F0074058F /* AppDelegate.swift in Sources */,
+				F3B8A99C2386FA640074058F /* HomeListRoute.swift in Sources */,
+				F3B8A9982386F7E70074058F /* HomeList.swift in Sources */,
+				F3B8A9962386F7AE0074058F /* HomeListView.swift in Sources */,
 				F3B8A9662386F61F0074058F /* SceneDelegate.swift in Sources */,
+				F3B8A99A2386F7FA0074058F /* HomeProtocol.swift in Sources */,
 				F3B8A9682386F61F0074058F /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +470,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CarsShopping/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CarsShopping/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,6 +490,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CarsShopping/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CarsShopping/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
