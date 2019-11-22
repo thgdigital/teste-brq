@@ -10,10 +10,16 @@ import Foundation
 
 class HomeList: HomeListInput {
     
+    var manager: CarsManager
+    
     weak var view: HomeListOutput?
     
+    init(manager: CarsManager) {
+        self.manager = manager
+    }
+    
     func fetchCars() {
-        
+        manager.fetchCars()
     }
     
 }

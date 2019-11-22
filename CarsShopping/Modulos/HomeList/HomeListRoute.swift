@@ -13,7 +13,7 @@ class HomeListRoute: NSObject {
     var navigation: UINavigationController?
     
     func makeScreen(window: UIWindow?) -> UINavigationController? {
-        let presenter = HomeList()
+        let presenter = HomeList(manager: CarsManager())
         let layout = UICollectionViewFlowLayout()
         let homeController = HomeListView(collectionViewLayout: layout)
         homeController.presenter = presenter
