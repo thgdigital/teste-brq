@@ -7,8 +7,7 @@
 //
 
 import UIKit
-
-private let reuseIdentifier = "Cell"
+import RNActivityView
 
 class HomeListView: UICollectionViewController {
     
@@ -64,6 +63,25 @@ extension HomeListView: UICollectionViewDelegateFlowLayout {
 
 extension HomeListView: HomeListOutput {
     
+    func error(type: ErrorType) {
+        let title = "Opss Error"
+        switch type {
+        case .empty(let message):
+            UIAlertController.showAlert(title: title, message: message, cancelButtonTitle: "Tentar Novamente", cancelBlock: { (alert) in
+                self.presenter.retry()
+            })
+        case .serve(let message):
+            UIAlertController.showAlert(title: title, message: message, cancelButtonTitle: "Tentar Novamente", cancelBlock: { (alert) in
+                self.presenter.retry()
+            })
+        case .network(let message):
+            UIAlertController.showAlert(title: title, message: message, cancelButtonTitle: "Tentar Novamente", cancelBlock: { (alert) in
+                self.presenter.retry()
+            })
+        }
+    }
+    
+    
     func fetched(cars: [CarsItem]) {
         self.cars = cars
         collectionView.reloadData()
@@ -75,5 +93,13 @@ extension HomeListView: HomeListOutput {
             let indexPathsForVisibleItems = self.collectionView.indexPathsForVisibleItems
             self.collectionView.reloadItems(at: indexPathsForVisibleItems)
         }
+    }
+    
+    func startLoading() {
+        self.view.showActivityView()
+    }
+    
+    func stopLoading() {
+        self.view.hideActivityView()
     }
 }

@@ -45,8 +45,8 @@ class CarsManager: NSObject {
      }
 }
 
-enum ErrorType {
-    case serve
-    case empty
-    case network
+enum ErrorType: Error {
+    case serve(message: String)
+    case empty(message: String)
+    case network(message: String)
 }

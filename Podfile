@@ -9,6 +9,7 @@ target 'CarsShopping' do
   # Pods for Desafio Orama
 pod 'Alamofire'
 pod 'SDWebImage', '~> 5.0'
+pod 'RNActivityView'
 
   target 'CarsShoppingTests' do
     inherit! :search_paths

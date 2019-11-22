@@ -24,15 +24,27 @@ class HomeList: HomeListInput {
     }
     
     func fetchCars() {
-       manager.fetchCars { (lists, error) in
-            guard let lists = lists, !lists.isEmpty, error == nil else {
+        view?.startLoading()
+        manager.fetchCars { (lists, error) in
+            self.view?.stopLoading()
+            guard error == nil else {
+                self.castError(error: error)
                 return
             }
-          
+            
+            guard let lists = lists, !lists.isEmpty else {
+                self.view?.error(type: .empty(message: "Dados Vazios"))
+                return
+            }
+            
             self.lists = lists.map({ CarsItemMapper.make(model: $0) })
             self.lists.append(CarsItemLoading())
             self.view?.fetched(cars: self.lists)
         }
+    }
+    
+    func retry() {
+        fetchCars()
     }
     
     func paginate() {
@@ -44,11 +56,27 @@ class HomeList: HomeListInput {
             self.view?.fetched(paginate: self.lists)
             isPaginate = true
         }
-       
+        
+    }
+    
+    func castError(error: Error?) {
+        guard let error = error else {
+            return
+        }
+        
+        switch error._code {
+        case 500:
+            view?.error(type: .serve(message: "Error no servidor tente mais tarde"))
+        case -1009:
+            view?.error(type: .network(message: "Você esta sem conexão"))
+            
+        default: break
+            
+        }
     }
     
     func filterLoading() -> [CarsItem] {
-       lists = lists.filter({ !($0 is CarsItemLoading) })
-       return lists
+        lists = lists.filter({ !($0 is CarsItemLoading) })
+        return lists
     }
 }
