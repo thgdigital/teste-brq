@@ -8,7 +8,6 @@
 
 import Foundation
 
-// MARK: - WelcomeElement
 struct CarModel: Codable {
     let id: Int
     let nome, descricao, marca: String

@@ -11,8 +11,7 @@ import Alamofire
 enum Router: URLRequestConvertible {
     case getCars
     case readCar(idCar: String)
-   
-
+    
     static let baseURLString = "http://desafiobrq.herokuapp.com/v1/"
 
     var method: HTTPMethod {
@@ -34,7 +33,6 @@ enum Router: URLRequestConvertible {
     }
 
     // MARK: URLRequestConvertible
-
     func asURLRequest() throws -> URLRequest {
         let url = try Router.baseURLString.asURL()
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))

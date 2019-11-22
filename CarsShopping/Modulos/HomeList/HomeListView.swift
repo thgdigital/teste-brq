@@ -12,41 +12,68 @@ private let reuseIdentifier = "Cell"
 
 class HomeListView: UICollectionViewController {
     
-    var presenter: HomeListInput?
-
+    var presenter: HomeListInput!
+    
+    var cars: [CarsItem] = [CarsItem]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.fetchCars()
+        presenter.fetchCars()
         collectionView.backgroundColor = .white
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
+        initialLayout()
+        
     }
-
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return cars.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
-        return cell
+        if cars[indexPath.row] is CarsItemLoading {
+            return collectionView.dequeueReusableCell(withReuseIdentifier: LoadingCell.identifier, for: indexPath) as! LoadingCell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarCell.identifier, for: indexPath) as! CarCell
+            cell.populate(display: CarsItemMapper.make(item: cars[indexPath.row]), type: .compra)
+            return cell
+        }
+        
     }
-
-
-
+    
+    fileprivate func initialLayout() {
+        collectionView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
+        let nibName = UINib(nibName: "CarCell", bundle:nil)
+        collectionView.register(nibName, forCellWithReuseIdentifier: CarCell.identifier)
+        let nibNameLoading = UINib(nibName: "LoadingCell", bundle:nil)
+        collectionView.register(nibNameLoading, forCellWithReuseIdentifier: LoadingCell.identifier)
+    }
+    
 }
+
+extension HomeListView: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 135)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if cell is LoadingCell {
+            presenter.paginate()
+        }
+    }
+}
+
 extension HomeListView: HomeListOutput {
     
+    func fetched(cars: [CarsItem]) {
+        self.cars = cars
+        collectionView.reloadData()
+    }
+    
+    func fetched(paginate cars: [CarsItem]) {
+        self.cars = cars
+        collectionView.reloadItemsInSection(sectionIndex: 0, newCount: self.cars.count) {
+            let indexPathsForVisibleItems = self.collectionView.indexPathsForVisibleItems
+            self.collectionView.reloadItems(at: indexPathsForVisibleItems)
+        }
+    }
 }

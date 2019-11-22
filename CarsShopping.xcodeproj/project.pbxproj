@@ -25,6 +25,15 @@
 		F3B8A9A0238757A40074058F /* CarsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A99F238757A40074058F /* CarsManager.swift */; };
 		F3B8A9A2238758E20074058F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A9A1238758E20074058F /* Router.swift */; };
 		F3B8A9A423875B990074058F /* ListCarsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A9A323875B990074058F /* ListCarsModel.swift */; };
+		F3B8A9A62387663F0074058F /* CarsItemLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A9A52387663F0074058F /* CarsItemLoading.swift */; };
+		F3B8A9A8238767710074058F /* CarsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A9A7238767710074058F /* CarsItem.swift */; };
+		F3B8A9AA238768740074058F /* CarsItemMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A9A9238768740074058F /* CarsItemMapper.swift */; };
+		F3B8A9AD23876DBE0074058F /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A9AC23876DBE0074058F /* Helper.swift */; };
+		F3B8A9B02388091A0074058F /* CarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A9AE2388091A0074058F /* CarCell.swift */; };
+		F3B8A9B12388091A0074058F /* CarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3B8A9AF2388091A0074058F /* CarCell.xib */; };
+		F3B8A9B323880D1F0074058F /* CarDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A9B223880D1F0074058F /* CarDisplay.swift */; };
+		F3B8A9B823881F800074058F /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A9B623881F800074058F /* LoadingCell.swift */; };
+		F3B8A9B923881F800074058F /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3B8A9B723881F800074058F /* LoadingCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +83,15 @@
 		F3B8A99F238757A40074058F /* CarsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsManager.swift; sourceTree = "<group>"; };
 		F3B8A9A1238758E20074058F /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		F3B8A9A323875B990074058F /* ListCarsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCarsModel.swift; sourceTree = "<group>"; };
+		F3B8A9A52387663F0074058F /* CarsItemLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsItemLoading.swift; sourceTree = "<group>"; };
+		F3B8A9A7238767710074058F /* CarsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsItem.swift; sourceTree = "<group>"; };
+		F3B8A9A9238768740074058F /* CarsItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsItemMapper.swift; sourceTree = "<group>"; };
+		F3B8A9AC23876DBE0074058F /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		F3B8A9AE2388091A0074058F /* CarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCell.swift; sourceTree = "<group>"; };
+		F3B8A9AF2388091A0074058F /* CarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarCell.xib; sourceTree = "<group>"; };
+		F3B8A9B223880D1F0074058F /* CarDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDisplay.swift; sourceTree = "<group>"; };
+		F3B8A9B623881F800074058F /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
+		F3B8A9B723881F800074058F /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		FA4164222ED93B509D3DCFA4 /* Pods_CarsShoppingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CarsShoppingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -194,6 +212,7 @@
 		F3B8A9932386F76F0074058F /* Modulos */ = {
 			isa = PBXGroup;
 			children = (
+				F3B8A9AB23876D810074058F /* Helper */,
 				F3B8A99D2387577E0074058F /* Commom */,
 				F3B8A9942386F77A0074058F /* HomeList */,
 			);
@@ -214,6 +233,8 @@
 		F3B8A99D2387577E0074058F /* Commom */ = {
 			isa = PBXGroup;
 			children = (
+				F3B8A9B523881EBB0074058F /* Item */,
+				F3B8A9B423881EA70074058F /* Cell */,
 				F3B8A99E238757880074058F /* Manager */,
 			);
 			path = Commom;
@@ -227,6 +248,36 @@
 				F3B8A9A323875B990074058F /* ListCarsModel.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		F3B8A9AB23876D810074058F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F3B8A9AC23876DBE0074058F /* Helper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		F3B8A9B423881EA70074058F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F3B8A9AE2388091A0074058F /* CarCell.swift */,
+				F3B8A9AF2388091A0074058F /* CarCell.xib */,
+				F3B8A9B623881F800074058F /* LoadingCell.swift */,
+				F3B8A9B723881F800074058F /* LoadingCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		F3B8A9B523881EBB0074058F /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				F3B8A9A7238767710074058F /* CarsItem.swift */,
+				F3B8A9A52387663F0074058F /* CarsItemLoading.swift */,
+				F3B8A9A9238768740074058F /* CarsItemMapper.swift */,
+				F3B8A9B223880D1F0074058F /* CarDisplay.swift */,
+			);
+			path = Item;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,6 +391,8 @@
 			files = (
 				F3B8A9702386F6270074058F /* LaunchScreen.storyboard in Resources */,
 				F3B8A96D2386F6270074058F /* Preview Assets.xcassets in Resources */,
+				F3B8A9B12388091A0074058F /* CarCell.xib in Resources */,
+				F3B8A9B923881F800074058F /* LoadingCell.xib in Resources */,
 				F3B8A96A2386F6270074058F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,13 +522,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3B8A9A0238757A40074058F /* CarsManager.swift in Sources */,
+				F3B8A9AD23876DBE0074058F /* Helper.swift in Sources */,
 				F3B8A9642386F61F0074058F /* AppDelegate.swift in Sources */,
+				F3B8A9B02388091A0074058F /* CarCell.swift in Sources */,
 				F3B8A99C2386FA640074058F /* HomeListRoute.swift in Sources */,
+				F3B8A9AA238768740074058F /* CarsItemMapper.swift in Sources */,
 				F3B8A9982386F7E70074058F /* HomeList.swift in Sources */,
+				F3B8A9B323880D1F0074058F /* CarDisplay.swift in Sources */,
 				F3B8A9A2238758E20074058F /* Router.swift in Sources */,
 				F3B8A9962386F7AE0074058F /* HomeListView.swift in Sources */,
 				F3B8A9662386F61F0074058F /* SceneDelegate.swift in Sources */,
+				F3B8A9B823881F800074058F /* LoadingCell.swift in Sources */,
+				F3B8A9A62387663F0074058F /* CarsItemLoading.swift in Sources */,
 				F3B8A99A2386F7FA0074058F /* HomeProtocol.swift in Sources */,
+				F3B8A9A8238767710074058F /* CarsItem.swift in Sources */,
 				F3B8A9A423875B990074058F /* ListCarsModel.swift in Sources */,
 				F3B8A9682386F61F0074058F /* ContentView.swift in Sources */,
 			);

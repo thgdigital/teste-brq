@@ -10,8 +10,10 @@ import Foundation
 
 protocol HomeListInput {
     func fetchCars()
+    func paginate()
 }
 
 protocol HomeListOutput: class {
-    
+    func fetched(cars: [CarsItem])
+    func fetched(paginate cars: [CarsItem])
 }

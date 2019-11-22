@@ -16,6 +16,7 @@ class HomeListRoute: NSObject {
         let presenter = HomeList(manager: CarsManager())
         let layout = UICollectionViewFlowLayout()
         let homeController = HomeListView(collectionViewLayout: layout)
+        presenter.view = homeController
         homeController.presenter = presenter
         navigation = UINavigationController(rootViewController: homeController)
         self.window = window
