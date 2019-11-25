@@ -103,6 +103,8 @@ extension DetailView: DetailPresenterOutput {
             UIAlertController.showAlert(title: title, message: message, cancelButtonTitle: "Tentar Novamente", cancelBlock: { (alert) in
                 self.presenter.retry()
             })
+        case .compraLimite(let message):
+            UIAlertController.showAlert(title: title, message: message, cancelButtonTitle: "Fechar")
         }
     }
     

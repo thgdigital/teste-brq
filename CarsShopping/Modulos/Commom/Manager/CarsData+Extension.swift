@@ -9,15 +9,20 @@
 import CoreData
 
 extension CarData {
-    static func create(item: CarsItem) -> CarData {
-        let cardata = CarData()
-        cardata.descricao = item.descricao
-        cardata.id = Int64(item.id)
-        cardata.imagem = item.imagem
-        cardata.marca = item.marca
-        cardata.name = item.nome
-        cardata.valor = Float(item.preco)
-        
+    
+     @discardableResult
+    static func create(item: CarsItem) -> NSManagedObject {
+        let managedContext = CoredataManager.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "CarData", in: managedContext)!
+        let cardata = NSManagedObject(entity: entity, insertInto: managedContext)
+        cardata.setValue(item.descricao, forKey: "descricao")
+        cardata.setValue(item.id, forKey: "id")
+        cardata.setValue(item.imagem, forKey: "imagem")
+        cardata.setValue(item.marca, forKey: "marca")
+        cardata.setValue(item.nome, forKey: "name")
+        cardata.setValue(item.preco, forKey: "valor")
+        cardata.setValue(item.quantidade, forKey: "quantidade")
+    
         return cardata
     }
     static func create(model: CarData) -> CarsItem {
@@ -28,6 +33,7 @@ extension CarData {
         item.marca = model.marca ?? ""
         item.nome = model.name ?? ""
         item.preco = Int(model.valor)
+        item.quantidade = Int(model.quantidade)
         
         return item
     }

@@ -9,7 +9,6 @@
 import Foundation
 
 class HomeList: HomeListInput {
-    
     var manager: CarsManager
     
     weak var view: HomeListOutput?
@@ -19,6 +18,8 @@ class HomeList: HomeListInput {
     var isPaginate = true
     
     var route: HomeListRoute
+    
+    var limitCompra: Int = 100000
     
     
     init(manager: CarsManager, route: HomeListRoute) {
@@ -85,5 +86,34 @@ class HomeList: HomeListInput {
     
     func didSelected(with item: CarsItem) {
         route.showDetail(idCars: item.id)
+    }
+    
+    func sendCompra(with item: CarsItem) {
+        let dataDados = PurchaseManager.getList()
+        
+        if dataDados.isEmpty {
+            item.quantidade = 1
+            _ = PurchaseManager.save(item: item)
+        } else {
+            var total: Int = 0
+            for dados in dataDados {
+                print(dados.quantidade)
+                total = Int(dados.valor * Float(dados.quantidade))
+            }
+            
+            if total < limitCompra, (total + item.preco) <= limitCompra {
+                if let dados = dataDados.first(where: { $0.id == item.id }) {
+                    dados.quantidade += 1
+                   _ = PurchaseManager.saveContext()
+                } else {
+                      item.quantidade = 1
+                    _ = PurchaseManager.save(item: item)
+                }
+                
+            } else {
+                view?.error(type: .compraLimite(message: "Você passou limite de compra"))
+            }
+            
+        }
     }
 }

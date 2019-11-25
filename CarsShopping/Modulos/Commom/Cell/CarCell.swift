@@ -26,6 +26,7 @@ class CarCell: UICollectionViewCell {
     @IBOutlet weak var qtdLabel: UILabel!
     @IBOutlet weak var lineView: UIView!
     var indexPath: IndexPath = IndexPath(item: 0, section: 0)
+    @IBOutlet weak var butonCompra: UIButton!
     
     var type: CarCellType = .compra
     
@@ -39,6 +40,13 @@ class CarCell: UICollectionViewCell {
         qtdLabel.isHidden = display.isQtd
         qtdLabel.text = display.quantidade
         self.indexPath = indexPath
+        
+        switch type {
+        case .compra:
+            sendButton.setTitle("Comprar", for: .normal)
+        default:
+            sendButton.setTitle("Remover", for: .normal)
+        }
 
     }
     

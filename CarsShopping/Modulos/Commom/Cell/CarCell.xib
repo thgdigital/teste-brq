@@ -97,6 +97,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="295" height="135"/>
             <connections>
+                <outlet property="butonCompra" destination="UJm-iA-sXP" id="69C-za-fOh"/>
                 <outlet property="lineView" destination="2pm-f5-4QI" id="sPI-QI-ObK"/>
                 <outlet property="priceLabel" destination="DI3-Tk-27J" id="rDP-cu-BdO"/>
                 <outlet property="qtdLabel" destination="5TS-5A-bIv" id="69Q-cW-ZgF"/>
