@@ -12,6 +12,7 @@ protocol DetailPresenterInput {
     func find()
     func retry()
     var countItem: Int { get set}
+    func compra(with qtd: Int)
 }
 
 protocol DetailPresenterOutput: class {
@@ -19,4 +20,5 @@ protocol DetailPresenterOutput: class {
     func startLoading()
     func stopLoading()
     func fetched(item: CarsItem)
+    func showSuccess(message: String)
 }

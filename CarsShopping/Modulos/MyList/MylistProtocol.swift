@@ -8,8 +8,10 @@
 
 import Foundation
 protocol MylistInput {
+    var valorTotal:Int { get set}
     func fetch()
     func remove(with item: CarsItem)
+    func sendCompra()
 }
 
 protocol MylistOuput: class {

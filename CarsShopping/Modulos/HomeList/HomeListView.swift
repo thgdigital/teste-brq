@@ -45,6 +45,20 @@ class HomeListView: UICollectionViewController {
         collectionView.register(nibName, forCellWithReuseIdentifier: CarCell.identifier)
         let nibNameLoading = UINib(nibName: "LoadingCell", bundle:nil)
         collectionView.register(nibNameLoading, forCellWithReuseIdentifier: LoadingCell.identifier)
+        let infoButton = UIButton(type: .infoLight)
+
+        // You will need to configure the target action for the button itself, not the bar button itemr
+        infoButton.addTarget(self, action: #selector(infoAction), for: .touchUpInside)
+
+        // Create a bar button item using the info button as its custom view
+        let infoBarButtonItem = UIBarButtonItem(customView: infoButton)
+
+        // Use it as required
+        navigationItem.rightBarButtonItem = infoBarButtonItem
+    }
+    
+    @objc func infoAction () {
+        presenter.showMylist()
     }
     
 }
@@ -93,6 +107,10 @@ extension HomeListView: HomeListOutput {
         }
     }
     
+    func showSuccess(message: String){
+        let title = "Dados Salvos"
+        UIAlertController.showAlert(title: title, message: message, cancelButtonTitle: "Fechar")
+    }
     
     func fetched(cars: [CarsItem]) {
         self.cars = cars

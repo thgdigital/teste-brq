@@ -10,6 +10,7 @@ target 'CarsShopping' do
 pod 'Alamofire'
 pod 'SDWebImage', '~> 5.0'
 pod 'RNActivityView'
+pod 'DZNEmptyDataSet'
 
   target 'CarsShoppingTests' do
     inherit! :search_paths

@@ -14,6 +14,7 @@ protocol HomeListInput {
     func retry()
     func didSelected(with item: CarsItem)
     func sendCompra(with item: CarsItem)
+    func showMylist()
     
 }
 
@@ -23,4 +24,5 @@ protocol HomeListOutput: class {
     func error(type: ErrorType)
     func startLoading()
     func stopLoading()
+    func showSuccess(message: String)
 }

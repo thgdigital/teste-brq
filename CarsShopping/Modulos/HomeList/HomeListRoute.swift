@@ -27,4 +27,7 @@ class HomeListRoute: NSObject {
     func showDetail(idCars: Int) {
         self.navigation?.pushViewController(DetailRouter().makeScreen(idCar: idCars), animated: true)
     }
+    func showmylist(){
+       self.navigation?.pushViewController(MylistRoute().makeScreen(), animated: true)
+    }
 }

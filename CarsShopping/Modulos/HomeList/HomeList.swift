@@ -94,20 +94,23 @@ class HomeList: HomeListInput {
         if dataDados.isEmpty {
             item.quantidade = 1
             _ = PurchaseManager.save(item: item)
+            self.view?.showSuccess(message: "Sua compra foi realizado com sucesso")
         } else {
             var total: Int = 0
             for dados in dataDados {
-                print(dados.quantidade)
-                total = Int(dados.valor * Float(dados.quantidade))
+               
+                total += Int(dados.valor * Float(dados.quantidade))
             }
             
             if total < limitCompra, (total + item.preco) <= limitCompra {
                 if let dados = dataDados.first(where: { $0.id == item.id }) {
                     dados.quantidade += 1
                    _ = PurchaseManager.saveContext()
+                    self.view?.showSuccess(message: "Sua compra foi realizado com sucesso")
                 } else {
                       item.quantidade = 1
                     _ = PurchaseManager.save(item: item)
+                    self.view?.showSuccess(message: "Sua compra foi realizado com sucesso")
                 }
                 
             } else {
@@ -115,5 +118,8 @@ class HomeList: HomeListInput {
             }
             
         }
+    }
+    func showMylist(){
+        route.showmylist()
     }
 }

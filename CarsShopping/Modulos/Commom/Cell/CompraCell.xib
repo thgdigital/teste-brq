@@ -32,6 +32,9 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAZ-Nc-J6b">
                         <rect key="frame" x="290" y="8" width="54" height="35"/>
                         <state key="normal" title="Adquirir"/>
+                        <connections>
+                            <action selector="sendCompra:" destination="gTV-IL-0wX" eventType="touchUpInside" id="isM-CB-4f6"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>

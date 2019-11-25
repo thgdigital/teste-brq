@@ -33,6 +33,7 @@ class DetailView: UICollectionViewController {
         collectionView.register(nibNameDescricao, forCellWithReuseIdentifier: DescricaoCell.identifier)
         let nibNameCompra = UINib(nibName: "CompraCell", bundle:nil)
         collectionView.register(nibNameCompra, forCellWithReuseIdentifier: CompraCell.identifier)
+      
         
     }
     
@@ -56,6 +57,7 @@ class DetailView: UICollectionViewController {
                        return cell
         default:
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CompraCell.identifier, for: indexPath) as! CompraCell
+           cell.delegate = self
           return cell
         }
         
@@ -115,4 +117,13 @@ extension DetailView: DetailPresenterOutput {
     func stopLoading() {
         self.view.hideActivityView()
     }
+    func showSuccess(message: String){
+        let title = "Dados Salvos"
+        UIAlertController.showAlert(title: title, message: message, cancelButtonTitle: "Fechar")
+    }
+}
+extension DetailView: CompraCellDelegate {
+    func sendCompra(qtd: Int) {
+        presenter.compra(with: qtd)
+    }    
 }

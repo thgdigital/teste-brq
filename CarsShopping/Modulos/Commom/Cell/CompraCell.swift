@@ -10,6 +10,7 @@ import UIKit
 
 class CompraCell: UICollectionViewCell {
     var value: Int = 0
+    weak var delegate:CompraCellDelegate?
     
     @IBOutlet weak var qtdLabel: UILabel!
     
@@ -19,9 +20,12 @@ class CompraCell: UICollectionViewCell {
          
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBAction func sendCompra(_ sender: Any) {
+        delegate?.sendCompra(qtd: value)
     }
 
+}
+
+protocol CompraCellDelegate: class {
+    func sendCompra(qtd: Int)
 }

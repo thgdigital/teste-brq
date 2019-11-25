@@ -15,6 +15,8 @@ class DetailPresenter: DetailPresenterInput {
     var manger: CarsManager
     var idCars: Int
     var view: DetailPresenterOutput?
+    var carItem: CarsItem = CarsItem()
+    var limitCompra: Int = 100000
     
     init(idCars: Int, manger: CarsManager) {
         self.manger = manger
@@ -34,7 +36,8 @@ class DetailPresenter: DetailPresenterInput {
                 return
             }
             self.countItem = 3
-            self.view?.fetched(item: CarsItemMapper.make(model: carModel))
+            self.carItem = CarsItemMapper.make(model: carModel)
+            self.view?.fetched(item: self.carItem)
         }
     }
     
@@ -54,6 +57,38 @@ class DetailPresenter: DetailPresenterInput {
             view?.error(type: .network(message: "Você esta sem conexão"))
             
         default: break
+            
+        }
+    }
+    
+    func compra(with qtd: Int) {
+        let dataDados = PurchaseManager.getList()
+        
+        if dataDados.isEmpty {
+            carItem.quantidade = qtd
+            _ = PurchaseManager.save(item: carItem)
+            self.view?.showSuccess(message: "Sua compra foi realizado com sucesso")
+        } else {
+            var total: Int = 0
+            for dados in dataDados {
+              
+                total += Int(dados.valor * Float(dados.quantidade))
+            }
+            
+            if total < limitCompra, (total + carItem.preco * qtd) <= limitCompra {
+                if let dados = dataDados.first(where: { $0.id == carItem.id }) {
+                    dados.quantidade = Int64(qtd)
+                   _ = PurchaseManager.saveContext()
+                    self.view?.showSuccess(message: "Sua compra foi realizado com sucesso")
+                } else {
+                      carItem.quantidade = qtd
+                    _ = PurchaseManager.save(item: carItem)
+                    self.view?.showSuccess(message: "Sua compra foi realizado com sucesso")
+                }
+                
+            } else {
+                view?.error(type: .compraLimite(message: "Você passou limite de compra"))
+            }
             
         }
     }

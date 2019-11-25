@@ -53,6 +53,8 @@
 		F3B8A9DE238C6AC00074058F /* MylistRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A9DD238C6AC00074058F /* MylistRoute.swift */; };
 		F3B8A9E0238C6ACF0074058F /* MylistProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A9DF238C6ACF0074058F /* MylistProtocol.swift */; };
 		F3B8A9E2238C6ADC0074058F /* Mylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A9E1238C6ADC0074058F /* Mylist.swift */; };
+		F3B8A9E5238C84620074058F /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B8A9E3238C84620074058F /* FooterView.swift */; };
+		F3B8A9E6238C84620074058F /* FooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3B8A9E4238C84620074058F /* FooterView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +132,8 @@
 		F3B8A9DD238C6AC00074058F /* MylistRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MylistRoute.swift; sourceTree = "<group>"; };
 		F3B8A9DF238C6ACF0074058F /* MylistProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MylistProtocol.swift; sourceTree = "<group>"; };
 		F3B8A9E1238C6ADC0074058F /* Mylist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mylist.swift; sourceTree = "<group>"; };
+		F3B8A9E3238C84620074058F /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		F3B8A9E4238C84620074058F /* FooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterView.xib; sourceTree = "<group>"; };
 		FA4164222ED93B509D3DCFA4 /* Pods_CarsShoppingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CarsShoppingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -316,6 +320,8 @@
 				F3B8A9C8238C3DC90074058F /* DescricaoCell.xib */,
 				F3B8A9CB238C42D20074058F /* CompraCell.swift */,
 				F3B8A9CC238C42D20074058F /* CompraCell.xib */,
+				F3B8A9E3238C84620074058F /* FooterView.swift */,
+				F3B8A9E4238C84620074058F /* FooterView.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -466,6 +472,7 @@
 				F3B8A9CE238C42D20074058F /* CompraCell.xib in Resources */,
 				F3B8A96D2386F6270074058F /* Preview Assets.xcassets in Resources */,
 				F3B8A9B12388091A0074058F /* CarCell.xib in Resources */,
+				F3B8A9E6238C84620074058F /* FooterView.xib in Resources */,
 				F3B8A9B923881F800074058F /* LoadingCell.xib in Resources */,
 				F3B8A9C6238C39300074058F /* ThumbCell.xib in Resources */,
 				F3B8A96A2386F6270074058F /* Assets.xcassets in Resources */,
@@ -630,6 +637,7 @@
 				F3B8A9A423875B990074058F /* ListCarsModel.swift in Sources */,
 				F3B8A9682386F61F0074058F /* ContentView.swift in Sources */,
 				F3B8A9C9238C3DC90074058F /* DescricaoCell.swift in Sources */,
+				F3B8A9E5238C84620074058F /* FooterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
