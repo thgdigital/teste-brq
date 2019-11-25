@@ -12,6 +12,8 @@ protocol HomeListInput {
     func fetchCars()
     func paginate()
     func retry()
+    func didSelected(with item: CarsItem)
+    func sendCompra(with item: CarsItem)
     
 }
 

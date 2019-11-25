@@ -10,7 +10,7 @@ import Alamofire
 
 enum Router: URLRequestConvertible {
     case getCars
-    case readCar(idCar: String)
+    case readCar(idCar: Int)
     
     static let baseURLString = "http://desafiobrq.herokuapp.com/v1/"
 

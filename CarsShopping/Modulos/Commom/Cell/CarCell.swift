@@ -14,28 +14,36 @@ enum CarCellType {
     case remove
 }
 
+protocol CarCellDelegate: class {
+    func didSelected(type: CarCellType, indexPath: IndexPath)
+}
+
 class CarCell: UICollectionViewCell {
-    
+    weak var delegate: CarCellDelegate?
     @IBOutlet weak var thumbImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var qtdLabel: UILabel!
     @IBOutlet weak var lineView: UIView!
+    var indexPath: IndexPath = IndexPath(item: 0, section: 0)
+    
     var type: CarCellType = .compra
     
     @IBOutlet weak var sendButton: UIButton!
     
-    func populate(display: CarDisplay, type: CarCellType) {
+    func populate(display: CarDisplay, type: CarCellType, indexPath: IndexPath) {
         titleLabel.text = display.nome
         priceLabel.text = display.preco
         self.type = type
         thumbImageView.sd_setImage(with: URL(string: display.imagem), completed: nil)
         qtdLabel.isHidden = display.isQtd
         qtdLabel.text = display.quantidade
+        self.indexPath = indexPath
 
     }
     
     @IBAction func actionSend(_ sender: Any) {
+        delegate?.didSelected(type: type, indexPath: indexPath)
         
     }
     

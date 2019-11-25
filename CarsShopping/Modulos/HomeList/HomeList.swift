@@ -18,9 +18,12 @@ class HomeList: HomeListInput {
     
     var isPaginate = true
     
+    var route: HomeListRoute
     
-    init(manager: CarsManager) {
+    
+    init(manager: CarsManager, route: HomeListRoute) {
         self.manager = manager
+        self.route = route
     }
     
     func fetchCars() {
@@ -78,5 +81,9 @@ class HomeList: HomeListInput {
     func filterLoading() -> [CarsItem] {
         lists = lists.filter({ !($0 is CarsItemLoading) })
         return lists
+    }
+    
+    func didSelected(with item: CarsItem) {
+        route.showDetail(idCars: item.id)
     }
 }

@@ -9,11 +9,12 @@
 import UIKit
 
 class HomeListRoute: NSObject {
+    
     var window: UIWindow?
     var navigation: UINavigationController?
     
     func makeScreen(window: UIWindow?) -> UINavigationController? {
-        let presenter = HomeList(manager: CarsManager())
+        let presenter = HomeList(manager: CarsManager(), route: self)
         let layout = UICollectionViewFlowLayout()
         let homeController = HomeListView(collectionViewLayout: layout)
         presenter.view = homeController
@@ -21,5 +22,9 @@ class HomeListRoute: NSObject {
         navigation = UINavigationController(rootViewController: homeController)
         self.window = window
         return navigation
+    }
+    
+    func showDetail(idCars: Int) {
+        self.navigation?.pushViewController(DetailRouter().makeScreen(idCar: idCars), animated: true)
     }
 }

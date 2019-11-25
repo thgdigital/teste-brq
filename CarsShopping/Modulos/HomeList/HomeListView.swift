@@ -18,9 +18,7 @@ class HomeListView: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.fetchCars()
-        collectionView.backgroundColor = .white
         initialLayout()
-        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -32,13 +30,15 @@ class HomeListView: UICollectionViewController {
             return collectionView.dequeueReusableCell(withReuseIdentifier: LoadingCell.identifier, for: indexPath) as! LoadingCell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarCell.identifier, for: indexPath) as! CarCell
-            cell.populate(display: CarsItemMapper.make(item: cars[indexPath.row]), type: .compra)
+            cell.populate(display: CarsItemMapper.make(item: cars[indexPath.row]), type: .compra, indexPath: indexPath)
+            cell.delegate = self
             return cell
         }
         
     }
     
     fileprivate func initialLayout() {
+        collectionView.backgroundColor = .white
         collectionView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
         let nibName = UINib(nibName: "CarCell", bundle:nil)
         collectionView.register(nibName, forCellWithReuseIdentifier: CarCell.identifier)
@@ -58,6 +58,15 @@ extension HomeListView: UICollectionViewDelegateFlowLayout {
         if cell is LoadingCell {
             presenter.paginate()
         }
+    }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.didSelected(with: cars[indexPath.row])
+    }
+}
+
+extension HomeListView: CarCellDelegate {
+    func didSelected(type: CarCellType, indexPath: IndexPath) {
+        presenter.sendCompra(with: cars[indexPath.row])
     }
 }
 
