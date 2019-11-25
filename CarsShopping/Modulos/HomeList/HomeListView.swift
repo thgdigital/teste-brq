@@ -38,6 +38,7 @@ class HomeListView: UICollectionViewController {
     }
     
     fileprivate func initialLayout() {
+        navigationItem.title = "Lista de carros"
         collectionView.backgroundColor = .white
         collectionView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
         let nibName = UINib(nibName: "CarCell", bundle:nil)

@@ -21,6 +21,7 @@ class MylistView: UICollectionViewController {
     }
     
     fileprivate func initialLayout() {
+            navigationItem.title = "Cesta de compras"
            collectionView.backgroundColor = .white
            collectionView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
            let nibName = UINib(nibName: "CarCell", bundle:nil)
